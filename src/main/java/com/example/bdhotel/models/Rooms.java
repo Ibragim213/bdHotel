@@ -5,12 +5,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "rooms", schema = "public", catalog = "postgres")
+@Table(name = "rooms")
 public class Rooms {
 
     @Id // Добавляем аннотацию для первичного ключа
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Указываем стратегию генерации
-    @Column(name = "idRooms") // Имя столбца в базе данны
+    @Column(name = "idrooms") // Имя столбца в базе данны
     private long idRooms;
     @Column(name = "numberNumber") // Имя столбца в базе данных\
     private int numberNumber;

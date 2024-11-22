@@ -5,13 +5,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "employee", schema = "public", catalog = "postgres")
+@Table(name = "employee")
 public class Employee {
 
     @Id // Добавляем аннотацию для первичного ключа
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Указываем стратегию генерации
-    @Column(name = "id") // Имя столбца в базе данных
-    private Long id; // Поле для первичного ключа
+    @Column(name = "id_employee") // Имя столбца в базе данных
+    private Long idEmployee; // Поле для первичного ключа
 
     @Column(name = "name") // Имя столбца в базе данных
     private String name;
@@ -31,5 +31,15 @@ public class Employee {
     @Column(name = "password")
     private String password;
 
+// запрос
+    //{
+//"name": "Титов",
+//"age": "Иван",
+//"surname": "Титов",
+//"middleName": "Титов",
+//"login": "Титов",
+//"password": "Титов"
+//
+//}
 
 }
