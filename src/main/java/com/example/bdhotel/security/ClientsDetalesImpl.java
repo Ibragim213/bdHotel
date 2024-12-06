@@ -12,7 +12,7 @@ import java.util.Collection;
 
 @Data
 @AllArgsConstructor
-public class ClientsDetailsImpl implements UserDetails {
+public class ClientsDetalesImpl implements UserDetails {
     private Long clientId; // Идентификатор клиента
     private String fullName; // Полное имя клиента
     private String age; // Возраст клиента
@@ -25,13 +25,13 @@ public class ClientsDetailsImpl implements UserDetails {
     private String password; // Пароль клиента
 
     // Метод для создания экземпляра ClientsDetailsImpl из объекта Client
-    public static ClientsDetailsImpl build(Client client) {
-        return new ClientsDetailsImpl(
+    public static ClientsDetalesImpl build(Client client) {
+        return new ClientsDetalesImpl(
                 client.getIdClient(), // Получение идентификатора клиента
                 client.getSurname() + " " + client.getName() + " " + client.getPatronymic(), // Формирование полного имени
                 client.getAge(), // Получение возраста
                 client.getIssuedByWhomAndWhen(), // Получение данных о паспорте
-                client.getPassportSeriesAndNumber(), // Получение серии и номера паспорта
+                client.getPassport(), // Получение серии и номера паспорта
                 client.getPhoneNumber(), // Получение номера телефона
                 client.getEmail(), // Получение электронной почты
                 client.getSex(), // Получение пола клиента

@@ -8,46 +8,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/unautorized")
+@RequestMapping("/unauthorized")
 @Slf4j
 public class MainController {
-        private final DataAccessLayer dataAccessLayer;
-        @Autowired
-        public MainController(DataAccessLayer dataAccessLayer){
-            this.dataAccessLayer = dataAccessLayer;
-        }
 
+    private final DataAccessLayer dataAccessLayer;
+
+    @Autowired
+    public MainController(DataAccessLayer dataAccessLayer) {
+        this.dataAccessLayer = dataAccessLayer;
+    }
+
+
+
+      @GetMapping("/hello")
+      public String hello(){
+            return "hello";
+        }
 // пост
-    @PostMapping("/create/employee")
-    public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
-        dataAccessLayer.createEmploy(employee);
-        return ResponseEntity.ok("Employee created");
-    }
-    @PostMapping("/create/client")
-    public ResponseEntity<String> createClient(@RequestBody Client client){
-            dataAccessLayer.createClient(client);
-return ResponseEntity.ok("Client created");
-    }
-    @PostMapping("/create/rooms")
-    public ResponseEntity<String> createRooms(@RequestBody Rooms rooms){
-        dataAccessLayer.createRooms(rooms);
-        return ResponseEntity.ok("Rooms created");
-    }
-    @PostMapping("/create/roomServise")
-    public ResponseEntity<String> createRoomsServise(@RequestBody RoomsServise roomsServise){
-        dataAccessLayer.createRoomsServise(roomsServise);
-        return ResponseEntity.ok("room servise created");
-    }
-    @PostMapping("/create/booking")
-    public ResponseEntity<String> createBooking(@RequestBody Booking booking){
-        dataAccessLayer.createBooking(booking);
-        return ResponseEntity.ok("booking created");
-    }
-    @PostMapping("/create/roomsType")
-    public ResponseEntity<String> createRomsType(@RequestBody RoomsType roomsType ){
-        dataAccessLayer.createRoomsType(roomsType);
-        return ResponseEntity.ok("rooms type created");
-    }
+
 
     //delete
     @DeleteMapping("/delete/client/{id}")
@@ -75,11 +54,7 @@ return ResponseEntity.ok("Client created");
         dataAccessLayer.deleteRoomsTypeById(id);
         return ResponseEntity.ok("Client deleted");
     }
-    @DeleteMapping("/delete/roomServise/{id}")
-    public ResponseEntity<String> deleteRoomServiseById(@PathVariable("id") long id) {
-        dataAccessLayer.deleteRoomServise(id);
-        return ResponseEntity.ok("Client deleted");
-    }
+
     @DeleteMapping("/delete/servise/{id}")
     public ResponseEntity<String> deleteServiseById(@PathVariable("id") long id) {
         dataAccessLayer.deleteServiseById(id);
@@ -123,15 +98,7 @@ return ResponseEntity.ok("Client created");
             return ResponseEntity.ok(rooms);
         }
     }
-    @GetMapping("/get/roomsServise/{id}")
-    public ResponseEntity<RoomsServise> getRoomsServiseById(@PathVariable("id") long id){
-        RoomsServise roomsServise = dataAccessLayer.getRoomsServiseById(id);
-        if (roomsServise == null) {
-            return ResponseEntity.notFound().build();
-        } else{
-            return ResponseEntity.ok(roomsServise);
-        }
-    }
+
     @GetMapping("/get/roomsType/{id}")
     public ResponseEntity<RoomsType> getRoomsTypeById(@PathVariable("id") long id){
         RoomsType roomsType = dataAccessLayer.getRoomsTypeById(id);
@@ -150,4 +117,65 @@ return ResponseEntity.ok("Client created");
             return ResponseEntity.ok(servise);
         }
     }
-}
+    //patch
+
+    @PatchMapping("/patch/client/{id}")
+    public ResponseEntity<Client> patchClientById(@PathVariable("id") long id, @RequestBody Client client){
+        Client updatedClient = dataAccessLayer.patchClientById(id, client);
+        if (client == null) {
+            return ResponseEntity.notFound().build();
+        } else{
+            return ResponseEntity.ok(client);
+        }
+    }
+    @PatchMapping("/patch/booking/{id}")
+    public ResponseEntity<Booking> patchBookingById(@PathVariable("id") long id, @RequestBody Booking booking){
+        Booking updatedBooking = dataAccessLayer.patchBookingById(id, booking);
+        if (booking == null) {
+            return ResponseEntity.notFound().build();
+        } else{
+            return ResponseEntity.ok(booking);
+        }
+    }
+    @PatchMapping("/patch/employee/{id}")
+    public ResponseEntity<Employee> patchEmployeeById(@PathVariable("id") long id, @RequestBody Employee employee){
+        Employee updatedEmployee = dataAccessLayer.patchEmployeeById(id, employee);
+        if (employee == null) {
+            return ResponseEntity.notFound().build();
+        } else{
+            return ResponseEntity.ok(employee);
+        }
+    }
+    @PatchMapping("/patch/rooms/{id}")
+    public ResponseEntity<Rooms> patchRoomsById(@PathVariable("id") long id, @RequestBody Rooms rooms){
+        Rooms updatedRooms = dataAccessLayer.patchRoomsById(id, rooms);
+        if (rooms == null) {
+            return ResponseEntity.notFound().build();
+        } else{
+            return ResponseEntity.ok(rooms);
+        }
+    }
+
+    @PatchMapping("/patch/roomsType/{id}")
+    public ResponseEntity<RoomsType> patchRoomsTypeById(@PathVariable("id") long id, @RequestBody RoomsType roomsType){
+        RoomsType updatedRoomsType = dataAccessLayer.patchRoomsTypeById(id, roomsType);
+        if (roomsType == null) {
+            return ResponseEntity.notFound().build();
+        } else{
+            return ResponseEntity.ok(roomsType);
+        }
+    }
+    @PatchMapping("/patch/servise/{id}")
+    public ResponseEntity<Servise> patchServiseById(@PathVariable("id") long id, @RequestBody Servise servise){
+        Servise updatedServise = dataAccessLayer.patchServiseTypeById(id, servise);
+        if (servise == null) {
+            return ResponseEntity.notFound().build();
+        } else{
+            return ResponseEntity.ok(servise);
+        }
+    }
+
+
+
+    }
+

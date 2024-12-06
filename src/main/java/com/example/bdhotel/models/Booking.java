@@ -1,7 +1,7 @@
 package com.example.bdhotel.models;
+
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
 @Data
 @Entity
@@ -25,9 +25,9 @@ public class Booking {
     @Column(name = "finalPrice")
     private int finalPrice;
     @Column(name = "loginEmployee")
-    private VarcharJdbcType loginEmployee;
+    private String  loginEmployee;
     @Column(name = "loginClients")
-    private VarcharJdbcType loginClients;
+    private String loginClients;
     @Column(name = "idRooms")
     private Long idRooms;
     @Column(name = " totalAmount")

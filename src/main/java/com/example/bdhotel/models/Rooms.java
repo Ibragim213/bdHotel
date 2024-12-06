@@ -19,7 +19,7 @@ public class Rooms {
     private String className;
 
     @Column(name = "costPerDay")
-    private double costPerDay;
+    private int costPerDay;
 
 
     @Column(name = "status")

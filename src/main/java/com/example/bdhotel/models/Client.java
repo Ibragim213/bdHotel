@@ -14,14 +14,16 @@ public class Client {
     private Long idClient; // Поле для первичного ключа
     @Column(name = "surname") // Имя столбца в базе данных
     private String surname;
+    @Column(name = "age")
+    private String age;
     @Column(name = "name")
     private String name;
     @Column(name = "patronymic")
     private String patronymic;
     @Column(name = "issuedByWhomAndWhen")
     private String issuedByWhomAndWhen;
-    @Column(name = "passportSeriesAndNumber")
-    private String passportSeriesAndNumber;
+    @Column(name = "passport")
+    private String Passport;
     @Column(name = "number")
     private String number;
     @Column(name = "dateOfBirth")
@@ -36,6 +38,9 @@ public class Client {
     private String login;
     @Column(name = "pasword")
     private String password;
+
+
+
 
 //    {
 //    "surname": "Титов",
